@@ -104,6 +104,7 @@ button:hover {
 .info {
     display: flex;
     justify-content: space-between;
+    /* Горизонтальне розташування */
     align-items: center;
     padding: 10px 16px;
     background-color: #f8f9fa;
@@ -120,17 +121,22 @@ button:hover {
     font-weight: 600;
     display: flex;
     flex-direction: column;
+    /* Вертикальне розташування елементів усередині кожного блоку */
     text-align: center;
 }
 
 .info p span:first-child {
     font-size: 12px;
+    /* Розмір тексту для підпису */
     font-weight: 400;
+    /* Легший шрифт для підпису */
     color: #6c757d;
+    /* Колір підпису */
 }
 
 .info p span:last-child {
-    font-size: 12px;
+    font-size: 14px;
+    /* Більший розмір шрифту для значення */
     color: #2e2f42;
     font-weight: 600;
 }
