@@ -1,29 +1,122 @@
+/* Загальні стилі */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Центрування по горизонталі */
+    justify-content: flex-start;
+    /* Форма залишається зверху, галерея знизу */
+    min-height: 100vh;
+    /* Сторінка займає всю висоту вікна */
+}
+
+/* Контейнер для форми */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* Відстань між елементами */
+    width: 100%;
+    max-width: 600px;
+    /* Максимальна ширина форми */
+    padding: 20px;
+    margin-top: 50px;
+    /* Відступ зверху */
+}
+
+/* Форма пошуку */
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    /* Робить елементи однакової висоти */
+    gap: 8px;
+    /* Відстань між полем вводу і кнопкою */
+    width: 100%;
+}
+
+/* Поле вводу */
+.search-input {
+    flex: 1;
+    /* Поле займає доступний простір */
+    height: 60px;
+    /* Фіксована висота */
+    padding: 10px 20px;
+    font-size: 18px;
+    /* Розмір тексту */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    /* Закруглені краї */
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    /* Колір рамки при фокусі */
+}
+
+/* Кнопка пошуку */
+.search-button {
+    height: auto;
+    /* Автоматична висота для вирівнювання з полем вводу */
+    padding: 0 24px;
+    /* Горизонтальні відступи */
+    font-size: 18px;
+    /* Розмір тексту */
+    border: none;
+    border-radius: 8px;
+    /* Закруглені краї */
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+    /* Темніший фон при наведенні */
+}
+
 /* Галерея */
 .gallery {
     width: 100%;
     max-width: 1128px;
     display: grid;
     grid-template-columns: repeat(3, calc((1128px - 24px * 2) / 3));
-    /* 3 колонки */
     gap: 24px;
     /* Відстань між картками */
-    margin: 0 auto;
-    /* Центрування галереї */
+    margin: 30px auto;
+    /* Відступи зверху та знизу */
 }
 
 /* Картка галереї */
 .gallery-item {
     width: 100%;
     aspect-ratio: 16 / 9;
-    /* Фіксуємо пропорції картки (16:9) */
+    /* Фіксуємо пропорції картки */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    /* Розташування зображення та блоку info */
-    justify-content: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Зображення */
@@ -32,54 +125,43 @@
     height: 100%;
     object-fit: cover;
     /* Зображення обрізається для заповнення картки */
-    flex-shrink: 0;
 }
 
 /* Інформаційний блок */
 .info {
+    display: flex;
+    justify-content: space-between;
+    /* Горизонтальне розташування */
+    align-items: center;
+    /* Вирівнюємо елементи по центру */
+    padding: 0 16px;
     width: 100%;
-    height: 60px;
-    /* Фіксована висота блоку info */
+    height: 50px;
+    /* Фіксована висота */
     background-color: #f8f9fa;
     /* Світлий фон */
-    display: flex;
-    /* Вирівнювання тексту */
-    justify-content: space-between;
-    /* Рівномірний розподіл тексту */
-    align-items: center;
-    /* Вертикальне вирівнювання */
-    padding: 0 16px;
-    /* Внутрішні відступи */
     border-top: 1px solid #ddd;
-    /* Лінія між зображенням і info */
-    box-sizing: border-box;
+    /* Верхня межа */
 }
 
-/* Текст у блоці info */
+/* Текст у блоці .info */
 .info p {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin: 0;
     /* Прибираємо стандартні відступи */
+    text-align: center;
 }
 
 /* Верхній текст (числа) */
 .info p span:first-child {
     font-size: 12px;
-    /* Розмір тексту для чисел */
     color: #6c757d;
-    /* Світло-сірий колір */
     font-weight: 400;
 }
 
-/* Нижній текст (наприклад, "Likes") */
+/* Нижній текст (заголовки, наприклад, "Likes") */
 .info p span:last-child {
     font-size: 14px;
-    /* Більший текст */
     color: #2e2f42;
-    /* Темно-синій колір */
     font-weight: 600;
 }
 
@@ -87,30 +169,63 @@
 
 /* Для планшетів (до 768px) */
 @media (max-width: 768px) {
+    .container {
+        max-width: 500px;
+        /* Менша ширина для планшетів */
+    }
+
+    .search-input {
+        font-size: 16px;
+        padding: 10px 15px;
+        height: 50px;
+        /* Зменшена висота */
+    }
+
+    .search-button {
+        font-size: 16px;
+        padding: 0 20px;
+        height: 50px;
+        /* Висота відповідає полю вводу */
+    }
+
     .gallery {
         grid-template-columns: repeat(2, 1fr);
         /* 2 колонки */
         gap: 16px;
     }
-
-    .info {
-        height: 50px;
-        /* Зменшуємо висоту блоку info */
-        font-size: 12px;
-    }
 }
 
 /* Для телефонів (до 480px) */
 @media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        /* Зменшуємо відступи */
+    }
+
+    .search-form {
+        flex-direction: column;
+        /* Вертикальне розташування */
+        gap: 12px;
+        /* Відстань між полем і кнопкою */
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 12px;
+        height: 50px;
+    }
+
+    .search-button {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 12px;
+        height: 50px;
+    }
+
     .gallery {
         grid-template-columns: repeat(1, 1fr);
         /* 1 колонка */
         gap: 12px;
-    }
-
-    .info {
-        height: 50px;
-        /* Залишається компактним */
-        font-size: 12px;
     }
 }
