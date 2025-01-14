@@ -1,188 +1,116 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-   
-    body {
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            font-family: "Montserrat", sans-serif;
-}
-
-.conteiner {
-    text-align: center;
-    padding: 36px  156px;
-    width: 1440px;
-    height: auto;
-    display:flex;
-    flex-direction: column;
-    gap: 32px;
-    justify-content:flex-start;
-    align-items:center;
-
-}
-.search-form {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 8px;
-    width: 371px;
-    height: 40px;
-}
-
-#search-form input {
-    padding: 8px 16px;
-    border-radius: 4px;
-    width: 272px;
-    height: 40px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 8px;
-}
-
-#search-form button {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    border-radius: 8px;
-    padding: 8px 16px;
-    width: 91px;
-    height: 40px;
-    background: #4e75ff;
-}
-
-
 /* Галерея */
 .gallery {
-    width: 1128px;
-    /* Ширина галереї */
-    height: 648px;
-    /* Висота галереї */
+    width: 100%;
+    max-width: 1128px;
     display: grid;
     grid-template-columns: repeat(3, calc((1128px - 24px * 2) / 3));
     /* 3 колонки */
-    grid-template-rows: repeat(3, calc((648px - 24px * 2) / 3));
-    /* 3 рядки */
     gap: 24px;
     /* Відстань між картками */
     margin: 0 auto;
     /* Центрування галереї */
 }
 
-/* Картка */
+/* Картка галереї */
 .gallery-item {
-    width: calc((1128px - 24px * 2) / 3);
-    /* Ширина картки */
-    height: calc((648px - 24px * 2) / 3);
-    /* Висота картки */
-    background-color: #fff;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Фіксуємо пропорції картки (16:9) */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    /* Елементи розташовуються вертикально */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Розташування зображення та блоку info */
+    justify-content: flex-start;
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Картинка */
+/* Зображення */
 .gallery-item img {
     width: 100%;
-    /* Заповнює всю ширину картки */
-    height: calc(100% - 48px);
-    /* Залишає місце для блоку info */
+    height: 100%;
     object-fit: cover;
-    /* Забезпечує обрізку зображення зі збереженням пропорцій */
+    /* Зображення обрізається для заповнення картки */
+    flex-shrink: 0;
 }
 
 /* Інформаційний блок */
 .info {
     width: 100%;
-    /* Ширина блоку дорівнює ширині картки */
-    height: 48px;
-    /* Фіксована висота */
+    height: 60px;
+    /* Фіксована висота блоку info */
     background-color: #f8f9fa;
     /* Світлий фон */
     display: flex;
-    /* Flex-контейнер для вирівнювання тексту */
+    /* Вирівнювання тексту */
     justify-content: space-between;
-    /* Рівномірний розподіл параграфів */
+    /* Рівномірний розподіл тексту */
     align-items: center;
-    /* Вертикальне вирівнювання тексту */
+    /* Вертикальне вирівнювання */
     padding: 0 16px;
     /* Внутрішні відступи */
     border-top: 1px solid #ddd;
     /* Лінія між зображенням і info */
     box-sizing: border-box;
-    /* Включає padding у ширину */
 }
 
-/* Стилі для параграфів у info */
+/* Текст у блоці info */
 .info p {
     display: flex;
-    /* Робимо параграф контейнером */
     flex-direction: column;
-    /* Розташування тексту зверху вниз */
     align-items: center;
-    /* Вирівнювання тексту по центру */
     justify-content: center;
-    /* Вертикальне вирівнювання */
     margin: 0;
-    /* Відміняємо стандартні відступи */
+    /* Прибираємо стандартні відступи */
 }
 
 /* Верхній текст (числа) */
 .info p span:first-child {
-    font-size: 10px;
-    /* Розмір для числового значення */
+    font-size: 12px;
+    /* Розмір тексту для чисел */
     color: #6c757d;
     /* Світло-сірий колір */
     font-weight: 400;
-    /* Звичайний текст */
 }
 
-/* Нижній текст (заголовки, наприклад "Likes") */
+/* Нижній текст (наприклад, "Likes") */
 .info p span:last-child {
-    font-size: 12px;
-    /* Більший текст для заголовків */
+    font-size: 14px;
+    /* Більший текст */
     color: #2e2f42;
-    /* Темно-синій текст */
+    /* Темно-синій колір */
     font-weight: 600;
-    /* Жирний текст */
-}
-.loader {
-    display: none;
-    /* Ховаємо за замовчуванням */
-    text-align: center;
-    font-size: 16px;
-    color: gray;
-    margin-top: 20px;
 }
 
-.loader.visible {
-    display: block;
-    /* Показуємо, коли додаємо клас "visible" */
+/* Адаптивність */
+
+/* Для планшетів (до 768px) */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 колонки */
+        gap: 16px;
+    }
+
+    .info {
+        height: 50px;
+        /* Зменшуємо висоту блоку info */
+        font-size: 12px;
+    }
 }
 
+/* Для телефонів (до 480px) */
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(1, 1fr);
+        /* 1 колонка */
+        gap: 12px;
+    }
 
-
-
-
-
-
+    .info {
+        height: 50px;
+        /* Залишається компактним */
+        font-size: 12px;
+    }
+}
