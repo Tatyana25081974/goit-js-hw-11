@@ -134,6 +134,18 @@ button:hover {
     color: #2e2f42;
     font-weight: 600;
 }
+.loader {
+    display: none;
+    /* Ховаємо за замовчуванням */
+    font-size: 18px;
+    color: gray;
+    text-align: center;
+}
+
+.loader.visible {
+    display: block;
+    /* Показуємо, коли додається клас visible */
+}
 
 /* Адаптивність */
 

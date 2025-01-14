@@ -30,7 +30,7 @@ function onSearch(event) {
     clearGallery(); // Очищаємо попередні результати
     showLoader(); // Показуємо індикатор завантаження
 
-    fetchImages(query, 1, 9) // Виконуємо запит до API, повертаємо 9 зображень
+    fetchImages(query) // Виконуємо запит до API
         .then(data => {
             if (data.hits.length === 0) {
                 showNotification(

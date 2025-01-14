@@ -10,20 +10,24 @@ export function renderImageCards(images) {
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
           <div class="info">
             <p>
-                <span>${likes}</span>
                 <span>Likes</span>
+                <span>${likes}</span>
+                
             </p>
             <p>
-                <span>${views}</span>
                 <span>Views</span>
+                <span>${views}</span>
+                
             </p>
             <p>
-                <span>${comments}</span>
+                
                 <span>Comments</span>
+                <span>${comments}</span>
             </p>
             <p>
-                <span>${downloads}</span>
+                
                 <span>Downloads</span>
+                <span>${downloads}</span>
             </p>
           </div>
         </a>
