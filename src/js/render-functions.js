@@ -9,10 +9,22 @@ export function renderImageCards(images) {
         <a href="${largeImageURL}" class="gallery-item">
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
           <div class="info">
-            <p><b>Likes:</b> ${likes}</p>
-            <p><b>Views:</b> ${views}</p>
-            <p><b>Comments:</b> ${comments}</p>
-            <p><b>Downloads:</b> ${downloads}</p>
+            <p>
+                <span>${likes}</span>
+                <span>Likes</span>
+            </p>
+            <p>
+                <span>${views}</span>
+                <span>Views</span>
+            </p>
+            <p>
+                <span>${comments}</span>
+                <span>Comments</span>
+            </p>
+            <p>
+                <span>${downloads}</span>
+                <span>Downloads</span>
+            </p>
           </div>
         </a>
       `

@@ -15,7 +15,7 @@
             font-family: "Montserrat", sans-serif;
 }
 
-.search-form {
+.conteiner {
     text-align: center;
     padding: 36px  156px;
     width: 1440px;
@@ -27,106 +27,162 @@
     align-items:center;
 
 }
+.search-form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    width: 371px;
+    height: 40px;
+}
 
 #search-form input {
-    padding: 10px;
-    width: 250px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    width: 272px;
+    height: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
 }
 
 #search-form button {
-    padding: 10px 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 91px;
+    height: 40px;
+    background: #4e75ff;
 }
 
+
+/* Галерея */
 .gallery {
+    width: 1128px;
+    /* Ширина галереї */
+    height: 648px;
+    /* Висота галереї */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.info {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px;
-    font-size: 14px;
-}
-
-
-
-
-
-
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.gallery-container {
-    width: 1440px;
-    height: 696px;
-    padding: 24px 156px;
-}
-
-.gallery {
-    max-width: 1128px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px 24px;
+    grid-template-columns: repeat(3, calc((1128px - 24px * 2) / 3));
+    /* 3 колонки */
+    grid-template-rows: repeat(3, calc((648px - 24px * 2) / 3));
+    /* 3 рядки */
+    gap: 24px;
+    /* Відстань між картками */
     margin: 0 auto;
-    list-style: none;
-
+    /* Центрування галереї */
 }
 
+/* Картка */
 .gallery-item {
-    width: calc((1128px - 48px) / 3);
-    /* Ширина кожного зображення (3 в ряд) */
-    height: calc((648px - 48px) / 3);
-    /* Висота кожного зображення (3 ряди) */
-    box-sizing: border-box;
-
-}
-
-.gallery-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.basicLightbox__placeholder {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 1440px;
-    height: 696px;
-    padding: 28px 164px;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-
-}
-
-.basicLightbox__placeholder img {
-    max-width: 1112px;
-    max-height: 640px;
-}
-
-/* Заборона прокрутки при відкритому модальному вікні */
-body.basicLightbox--visible {
+    width: calc((1128px - 24px * 2) / 3);
+    /* Ширина картки */
+    height: calc((648px - 24px * 2) / 3);
+    /* Висота картки */
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    /* Елементи розташовуються вертикально */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Картинка */
+.gallery-item img {
+    width: 100%;
+    /* Заповнює всю ширину картки */
+    height: calc(100% - 48px);
+    /* Залишає місце для блоку info */
+    object-fit: cover;
+    /* Забезпечує обрізку зображення зі збереженням пропорцій */
+}
+
+/* Інформаційний блок */
+.info {
+    width: 100%;
+    /* Ширина блоку дорівнює ширині картки */
+    height: 48px;
+    /* Фіксована висота */
+    background-color: #f8f9fa;
+    /* Світлий фон */
+    display: flex;
+    /* Flex-контейнер для вирівнювання тексту */
+    justify-content: space-between;
+    /* Рівномірний розподіл параграфів */
+    align-items: center;
+    /* Вертикальне вирівнювання тексту */
+    padding: 0 16px;
+    /* Внутрішні відступи */
+    border-top: 1px solid #ddd;
+    /* Лінія між зображенням і info */
+    box-sizing: border-box;
+    /* Включає padding у ширину */
+}
+
+/* Стилі для параграфів у info */
+.info p {
+    display: flex;
+    /* Робимо параграф контейнером */
+    flex-direction: column;
+    /* Розташування тексту зверху вниз */
+    align-items: center;
+    /* Вирівнювання тексту по центру */
+    justify-content: center;
+    /* Вертикальне вирівнювання */
+    margin: 0;
+    /* Відміняємо стандартні відступи */
+}
+
+/* Верхній текст (числа) */
+.info p span:first-child {
+    font-size: 10px;
+    /* Розмір для числового значення */
+    color: #6c757d;
+    /* Світло-сірий колір */
+    font-weight: 400;
+    /* Звичайний текст */
+}
+
+/* Нижній текст (заголовки, наприклад "Likes") */
+.info p span:last-child {
+    font-size: 12px;
+    /* Більший текст для заголовків */
+    color: #2e2f42;
+    /* Темно-синій текст */
+    font-weight: 600;
+    /* Жирний текст */
+}
+.loader {
+    display: none;
+    /* Ховаємо за замовчуванням */
+    text-align: center;
+    font-size: 16px;
+    color: gray;
+    margin-top: 20px;
+}
+
+.loader.visible {
+    display: block;
+    /* Показуємо, коли додаємо клас "visible" */
+}
+
+
+
+
+
+
+
