@@ -6,112 +6,99 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-color: #fff;
-    font-family: "Montserrat", sans-serif;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    /* Центрування форми та галереї по горизонталі */
     align-items: center;
-    /* Центрування по горизонталі */
-    justify-content: flex-start;
-    /* Форма залишається зверху, галерея знизу */
+    /* Центрування по вертикалі */
     min-height: 100vh;
-    /* Сторінка займає всю висоту вікна */
+    /* Висота сторінки дорівнює висоті екрана */
+    font-family: "Montserrat", sans-serif;
+    padding: 20px;
+    /* Відступи для мобільних пристроїв */
 }
 
-/* Контейнер для форми */
-.container {
+.conteiner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    /* Відстань між елементами */
+    /* Відстань між формою та галереєю */
     width: 100%;
-    max-width: 600px;
-    /* Максимальна ширина форми */
-    padding: 20px;
-    margin-top: 50px;
-    /* Відступ зверху */
+    max-width: 1200px;
+    /* Обмеження ширини для великих екранів */
 }
 
 /* Форма пошуку */
 .search-form {
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    /* Робить елементи однакової висоти */
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     /* Відстань між полем вводу і кнопкою */
     width: 100%;
+    max-width: 600px;
+    /* Максимальна ширина форми */
 }
 
-/* Поле вводу */
 .search-input {
     flex: 1;
-    /* Поле займає доступний простір */
-    height: 60px;
-    /* Фіксована висота */
-    padding: 10px 20px;
-    font-size: 18px;
-    /* Розмір тексту */
+    /* Поле займає весь доступний простір */
+    height: 50px;
+    /* Висота поля вводу */
+    padding: 0 15px;
+    /* Внутрішні відступи */
+    font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 8px;
-    /* Закруглені краї */
     outline: none;
     transition: border-color 0.3s ease;
 }
 
 .search-input:focus {
     border-color: #007bff;
-    /* Колір рамки при фокусі */
 }
 
-/* Кнопка пошуку */
-.search-button {
-    height: auto;
-    /* Автоматична висота для вирівнювання з полем вводу */
-    padding: 0 24px;
+button {
+    height: 50px;
+    /* Висота кнопки така ж, як у поля вводу */
+    padding: 0 20px;
     /* Горизонтальні відступи */
-    font-size: 18px;
-    /* Розмір тексту */
+    font-size: 16px;
     border: none;
     border-radius: 8px;
-    /* Закруглені краї */
     background-color: #007bff;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.search-button:hover {
+button:hover {
     background-color: #0056b3;
-    /* Темніший фон при наведенні */
 }
 
 /* Галерея */
 .gallery {
-    width: 100%;
-    max-width: 1128px;
     display: grid;
-    grid-template-columns: repeat(3, calc((1128px - 24px * 2) / 3));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Адаптивні колонки */
     gap: 24px;
     /* Відстань між картками */
-    margin: 30px auto;
-    /* Відступи зверху та знизу */
+    width: 100%;
+    max-width: 1128px;
+    /* Максимальна ширина галереї */
 }
 
-/* Картка галереї */
+/* Картка */
 .gallery-item {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    /* Фіксуємо пропорції картки */
+    background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 4 / 3;
+    /* Фіксовані пропорції для картки */
 }
 
 .gallery-item:hover {
@@ -119,47 +106,31 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Зображення */
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Зображення обрізається для заповнення картки */
+    /* Центрування та обрізка зображення */
+    display: block;
 }
 
-/* Інформаційний блок */
+/* Блок info */
 .info {
     display: flex;
     justify-content: space-between;
-    /* Горизонтальне розташування */
+    /* Рівномірний розподіл елементів */
     align-items: center;
-    /* Вирівнюємо елементи по центру */
-    padding: 0 16px;
-    width: 100%;
-    height: 50px;
-    /* Фіксована висота */
+    /* Вирівнювання по вертикалі */
+    padding: 10px 16px;
     background-color: #f8f9fa;
-    /* Світлий фон */
     border-top: 1px solid #ddd;
-    /* Верхня межа */
+    height: 48px;
+    /* Фіксована висота для однакового вигляду */
+    box-sizing: border-box;
 }
 
-/* Текст у блоці .info */
 .info p {
     margin: 0;
-    /* Прибираємо стандартні відступи */
-    text-align: center;
-}
-
-/* Верхній текст (числа) */
-.info p span:first-child {
-    font-size: 12px;
-    color: #6c757d;
-    font-weight: 400;
-}
-
-/* Нижній текст (заголовки, наприклад, "Likes") */
-.info p span:last-child {
     font-size: 14px;
     color: #2e2f42;
     font-weight: 600;
@@ -169,63 +140,43 @@ body {
 
 /* Для планшетів (до 768px) */
 @media (max-width: 768px) {
-    .container {
-        max-width: 500px;
-        /* Менша ширина для планшетів */
-    }
-
     .search-input {
-        font-size: 16px;
-        padding: 10px 15px;
-        height: 50px;
-        /* Зменшена висота */
+        font-size: 14px;
+        height: 45px;
+        /* Зменшення висоти */
     }
 
-    .search-button {
-        font-size: 16px;
-        padding: 0 20px;
-        height: 50px;
-        /* Висота відповідає полю вводу */
+    button {
+        font-size: 14px;
+        height: 45px;
     }
 
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 колонки */
         gap: 16px;
+        /* Менший відступ між картками */
     }
 }
 
 /* Для телефонів (до 480px) */
 @media (max-width: 480px) {
-    .container {
-        padding: 10px;
-        /* Зменшуємо відступи */
-    }
-
     .search-form {
         flex-direction: column;
-        /* Вертикальне розташування */
+        /* Вертикальне розташування форми */
         gap: 12px;
-        /* Відстань між полем і кнопкою */
     }
 
-    .search-input {
+    .search-input,
+    button {
         width: 100%;
-        font-size: 14px;
-        padding: 8px 12px;
-        height: 50px;
-    }
-
-    .search-button {
-        width: 100%;
-        font-size: 14px;
-        padding: 8px 12px;
-        height: 50px;
+        height: 45px;
     }
 
     .gallery {
-        grid-template-columns: repeat(1, 1fr);
-        /* 1 колонка */
         gap: 12px;
+    }
+
+    .gallery-item {
+        aspect-ratio: 3 / 4;
+        /* Вертикальні пропорції для карток */
     }
 }
