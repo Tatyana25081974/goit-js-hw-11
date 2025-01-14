@@ -154,17 +154,21 @@ button:hover {
     }
 }
 
-/* Для телефонів (до 480px) */
+/* Адаптивність для телефонів (до 480px) */
 @media (max-width: 480px) {
     .search-form {
         flex-direction: column;
+        /* Вертикальне розташування форми */
         gap: 12px;
     }
 
     .search-input,
     button {
         width: 100%;
+        /* Займають всю ширину */
         height: 45px;
+        /* Однакова висота для поля вводу та кнопки */
+        font-size: 14px;
     }
 
     .gallery {
